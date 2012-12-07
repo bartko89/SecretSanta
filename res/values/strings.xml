@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, SecretSantaActivity!</string>
+    <string name="app_name">SecretSanta</string>
+    <string name="Welcome">Welcome</string>
+    <string name="NumPersons">"How many secret santas: "</string>
+    <string name="Go">Go</string>
+    <string name="Continue">continue...</string>
+    <string name="person">"Please enter the following information for person "</string>
+    <string name="nameofperson">Name of Person:</string>
+    <string name="nameofpartner">"Name of Partner: "</string>
+    <string name="note">Note: If no partner, please leave empty.</string>
+    <string name="next">Continue to next person.</string>
+    <string name="getlist">Get the List!</string>
+    <string name="secretsanta">, you are the Secret Santa for:</string>
+    <string name="exlamitory">!!!!</string>
+
+</resources>
