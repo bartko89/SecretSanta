@@ -1,8 +1,10 @@
 package secreteSanta.main;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -30,6 +32,32 @@ public class SecretSantaList implements Parcelable{
 					person.add(new ListObj(in.readString(),in.readString(),in.readString()));
 			}
 		}
+		ArrayList<String> list = new ArrayList<String>();
+		Map<String, ListObj> personMap = new HashMap<String, ListObj>();
+		Map<String, ListObj> cantMap = new HashMap<String, ListObj>();
+		for(ListObj item : person){
+			list.add(item.getPerson());
+			list.add(item.getCant1());
+			personMap.put(item.getPerson(), item);
+		}
+		ArrayList<String> otherList = new ArrayList<String>(list);
+		for(String item : list){
+			ListObj tmp = personMap.get(item);
+			otherList = recurseSantas(tmp.getPerson(), tmp.getCant1(), otherList, personMap);
+		}
+		otherList.size();
+	}
+	
+	private ArrayList<String> recurseSantas (String person, String cant, ArrayList<String> list, Map<String, ListObj> map){
+		for(String item : list){
+			if(!item.equals(person) && !item.equals(cant)){
+				ListObj tmp = map.get(item);
+				tmp.setShop_for(item);
+				final String fitem = item;
+				return new ArrayList<String>(list){{remove(fitem);}};
+			}
+		}
+		return list;
 	}
 	
 	public static final Parcelable.Creator<SecretSantaList> CREATOR = new Parcelable.Creator<SecretSantaList>() {
